@@ -44,6 +44,8 @@ services:
         labels:
             - traefik.enable=true
             - traefik.docker.network=traefik
+            # Must disable HTTPS within the .env file
+            - traefik.http.services.jitsi.loadbalancer.server.port=${HTTP_PORT}
             # Non-Cloudflare route
             - traefik.http.routers.jitsi.rule=Host(`meet.hadesmatrix.com`) || Host(`www.meet.hadesmatrix.com`) || Host(`meet.thespaceresource.com`) || Host(`www.meet.thespaceresource.com`)
             - traefik.http.routers.jitsi.entrypoints=websecure
